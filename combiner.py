@@ -11,19 +11,15 @@ current_count = 0
 for line in sys.stdin:
     values = line.strip().split("\t")
 
-    year = int(values[0].strip())
-    street = values[1].strip()
-    zip_code = values[2].strip()
-    human_type = values[3].strip()
-    damage = values[4].strip()
-    count = int(values[5].strip())
-
-    if year <= 2012 or zip_code == "" or street == "":
-        continue
+    street = values[0].strip()
+    zip_code = values[1].strip()
+    human_type = values[2].strip()
+    damage = values[3].strip()
+    count = int(values[4].strip())
 
     if current_damage == damage and \
             current_zip_code == zip_code and \
-            current_type == type and \
+            current_type == human_type and \
             current_street == street:  # is different damage enough?
         current_count += count
 

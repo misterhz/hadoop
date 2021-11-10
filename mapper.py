@@ -26,25 +26,19 @@ for line in sys.stdin:
     year = int(values[0].split("/")[2])
     zip_code = values[2]
 
-    print(f"{year}\t{on_street}\t{zip_code}\tpedestrians\tinjured\t{pedestrians_injured}")
-    print(f"{year}\t{on_street}\t{zip_code}\tpedestrians\tkilled\t{pedestrians_killed}")
-    print(f"{year}\t{on_street}\t{zip_code}\tcyclist\tinjured\t{cyclist_injured}")
-    print(f"{year}\t{on_street}\t{zip_code}\tcyclist\tkilled\t{cyclist_killed}")
-    print(f"{year}\t{on_street}\t{zip_code}\tmotorist\tinjured\t{motorist_injured}")
-    print(f"{year}\t{on_street}\t{zip_code}\tmotorist\tkilled\t{motorist_killed}")
+    if year <= 2012:
+        continue
 
-    print(f"{year}\t{cross_street}\t{zip_code}\tpedestrians\tinjured\t{pedestrians_injured}")
-    print(f"{year}\t{cross_street}\t{zip_code}\tpedestrians\tkilled\t{pedestrians_killed}")
-    print(f"{year}\t{cross_street}\t{zip_code}\tcyclist\tinjured\t{cyclist_injured}")
-    print(f"{year}\t{cross_street}\t{zip_code}\tcyclist\tkilled\t{cyclist_killed}")
-    print(f"{year}\t{cross_street}\t{zip_code}\tmotorist\tinjured\t{motorist_injured}")
-    print(f"{year}\t{cross_street}\t{zip_code}\tmotorist\tkilled\t{motorist_killed}")
+    if zip_code == "":
+        continue
 
-    print(f"{year}\t{off_street}\t{zip_code}\tpedestrians\tinjured\t{pedestrians_injured}")
-    print(f"{year}\t{off_street}\t{zip_code}\tpedestrians\tkilled\t{pedestrians_killed}")
-    print(f"{year}\t{off_street}\t{zip_code}\tcyclist\tinjured\t{cyclist_injured}")
-    print(f"{year}\t{off_street}\t{zip_code}\tcyclist\tkilled\t{cyclist_killed}")
-    print(f"{year}\t{off_street}\t{zip_code}\tmotorist\tinjured\t{motorist_injured}")
-    print(f"{year}\t{off_street}\t{zip_code}\tmotorist\tkilled\t{motorist_killed}")
+    for street in (on_street, cross_street, off_street):
+        if street != "":
+            print(f"{street}\t{zip_code}\tpedestrians\tinjured\t{pedestrians_injured}")
+            print(f"{street}\t{zip_code}\tpedestrians\tkilled\t{pedestrians_killed}")
+            print(f"{street}\t{zip_code}\tcyclist\tinjured\t{cyclist_injured}")
+            print(f"{street}\t{zip_code}\tcyclist\tkilled\t{cyclist_killed}")
+            print(f"{street}\t{zip_code}\tmotorist\tinjured\t{motorist_injured}")
+            print(f"{street}\t{zip_code}\tmotorist\tkilled\t{motorist_killed}")
 
 
